@@ -1,0 +1,37 @@
+== depalma
+
+== Installation
+
+== Usage
+
+It's recommended that you inherit from the Dispatcher and DispatchRule classes and create your own. From there you can override the dispatch algorithm (or leave it alone). Even if you don't plan on overriding any methods you may want to at least override the Dispatcher.recall method. Which does nothing by default. 
+
+Dispatch rules basically tell the Dispatcher which "units" to assign "messages" too. A "unit" is what you are dispatching to, and a "message" is what is being dispatched. For example if you had a sales team "Salesman A", "Salesman B", and "Salesman C" they would be the "units". And if you were dispatching sales leads to those salesmen the "leads" would be the "message".
+
+# First create a rule.
+
+class SalesLeadDispatchRule < DispatchRule
+  # Create a rule to your liking maybe it accepts variables.
+end
+
+class LeadDispatcher < Dispatcher
+  def recall
+    # Create code here to find all the leads dispatched in the past hour and unassign them.
+  end
+
+  def distribution_algorithm
+    # If Dispatcher.message_list or Dispatcher.unit_list or undefined throw and error.
+    raise NotImplementedError, "Dispatcher.message_list is undefined or empty.", if Dispatcher.message_list == undef || Dispatcher.message_list.empty?
+    raise NotImplementedError, "Dispatcher.unit_list is undefined or empty.", if Dispatcher.unit_list == undef || Dispatcher.unit_list.empty?
+
+    # Apply the Dispatch rules, loop through the messages and assign them to the units.
+    
+  end
+end
+
+sldRule = SalesLeadDispatchRule.new
+ldispatcher = LeadDispatcher.new
+ldispatcher.add_rule(sldRule)
+ldispatcher.message_list(todays_leads)
+ldispatcher.unit_list(SalesReps.find(:all))
+results = ldispatcher.dispatch
