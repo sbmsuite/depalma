@@ -10,28 +10,28 @@ Dispatch rules basically tell the Dispatcher which "units" to assign "messages" 
 
 # First create a rule.
 
-class SalesLeadDispatchRule < DispatchRule
-  # Create a rule to your liking maybe it accepts variables.
-end
-
-class LeadDispatcher < Dispatcher
-  def recall
-    # Create code here to find all the leads dispatched in the past hour and unassign them.
+  class SalesLeadDispatchRule < DispatchRule
+    # Create a rule to your liking maybe it accepts variables.
   end
 
-  def distribution_algorithm
-    # If Dispatcher.message_list or Dispatcher.unit_list or undefined throw and error.
-    raise NotImplementedError, "Dispatcher.message_list is undefined or empty.", if Dispatcher.message_list == undef || Dispatcher.message_list.empty?
-    raise NotImplementedError, "Dispatcher.unit_list is undefined or empty.", if Dispatcher.unit_list == undef || Dispatcher.unit_list.empty?
+  class LeadDispatcher < Dispatcher
+    def recall
+      # Create code here to find all the leads dispatched in the past hour and unassign them.
+    end
 
-    # Apply the Dispatch rules, loop through the messages and assign them to the units.
+    def distribution_algorithm
+      # If Dispatcher.message_list or Dispatcher.unit_list or undefined throw and error.
+      raise NotImplementedError, "Dispatcher.message_list is undefined or empty.", if Dispatcher.message_list == undef || Dispatcher.message_list.empty?
+      raise NotImplementedError, "Dispatcher.unit_list is undefined or empty.", if Dispatcher.unit_list == undef || Dispatcher.unit_list.empty?
+
+      # Apply the Dispatch rules, loop through the messages and assign them to the units.
     
+    end
   end
-end
 
-sldRule = SalesLeadDispatchRule.new
-ldispatcher = LeadDispatcher.new
-ldispatcher.add_rule(sldRule)
-ldispatcher.message_list(todays_leads)
-ldispatcher.unit_list(SalesReps.find(:all))
-results = ldispatcher.dispatch
+  sldRule = SalesLeadDispatchRule.new
+  ldispatcher = LeadDispatcher.new
+  ldispatcher.add_rule(sldRule)
+  ldispatcher.message_list(todays_leads)
+  ldispatcher.unit_list(SalesReps.find(:all))
+  results = ldispatcher.dispatch
