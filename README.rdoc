@@ -14,6 +14,8 @@ Dispatch rules basically tell the Dispatcher which "units" to assign "messages" 
     # Create a rule to your liking maybe it accepts variables.
   end
 
+# Then create your dispatcher
+
   class LeadDispatcher < Dispatcher
     def recall
       # Create code here to find all the leads dispatched in the past hour and unassign them.
@@ -28,6 +30,8 @@ Dispatch rules basically tell the Dispatcher which "units" to assign "messages" 
     
     end
   end
+
+# Then you can apply your dispatcher
 
   sldRule = SalesLeadDispatchRule.new
   ldispatcher = LeadDispatcher.new
