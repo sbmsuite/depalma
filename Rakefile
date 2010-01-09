@@ -24,8 +24,8 @@ Gem::Specification.new do |s|
   s.date = %q{2010-01-08}
   s.description = %q{Configure simple dispatch rules and have data dispatched over a group of receivers.}
   s.email = %q{rankin.devon@gmail.com}
-  s.extra_rdoc_files = ["lib/depalma.rb", "README.rdoc"]
-  s.files = ["lib/depalma.rb", "Rakefile", "README.rdoc", "Manifest", "depalma.gemspec"]
+  s.extra_rdoc_files = ["lib/dispatcher.rb", "lib/dispatch_rule.rb", "README.rdoc"]
+  s.files = ["lib/dispatcher.rb", "lib/dispatch_rule.rb", "Rakefile", "README.rdoc", "Manifest", "depalma.gemspec"]
   s.has_rdoc = true
   s.homepage = %q{http://github.com/crankin/depalma}
   s.rdoc_options = ["--line-numbers", "--inline-source", "--title", "depalma", "--main", "README.rdoc"]

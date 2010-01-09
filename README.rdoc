@@ -8,13 +8,13 @@ It's recommended that you inherit from the Dispatcher and DispatchRule classes a
 
 Dispatch rules basically tell the Dispatcher which "units" to assign "messages" too. A "unit" is what you are dispatching to, and a "message" is what is being dispatched. For example if you had a sales team "Salesman A", "Salesman B", and "Salesman C" they would be the "units". And if you were dispatching sales leads to those salesmen the "leads" would be the "message".
 
-# First create a rule.
+First create a rule.
 
   class SalesLeadDispatchRule < DispatchRule
     # Create a rule to your liking maybe it accepts variables.
   end
 
-# Then create your dispatcher
+Then create your dispatcher
 
   class LeadDispatcher < Dispatcher
     def recall
@@ -31,10 +31,14 @@ Dispatch rules basically tell the Dispatcher which "units" to assign "messages" 
     end
   end
 
-# Then you can apply your dispatcher
+Then you can create your dispatcher and dispatch rules
+
+The Dispatcher takes three optional arguments (message_list, unit_list, rule_list) in that order.
 
   sldRule = SalesLeadDispatchRule.new
-  ldispatcher = LeadDispatcher.new
+  ldispatcher = LeadDispatcher.new(todays_leads, SalesReps.find(:all), [sldRule])
+
+Or you can set each one seperately.
   ldispatcher.add_rule(sldRule)
   ldispatcher.message_list(todays_leads)
   ldispatcher.unit_list(SalesReps.find(:all))
