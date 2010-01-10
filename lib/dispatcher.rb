@@ -13,6 +13,12 @@ class Dispatcher
     @unit_list = unit_list
   end
 
+  # dispatch_algorithm
+  #---------------------------------------------------------------------------
+  def dispatch_algorithm
+            
+  end
+
 
   # Instance Methods
 
@@ -20,6 +26,7 @@ class Dispatcher
   #---------------------------------------------------------------------------
   def add_rule(rule)
     @rule_list.push(rule)
+    @rule_list.sort! { |x,y| x.weight <=> y.weight }
   end
 
   # remove_rule
@@ -31,19 +38,8 @@ class Dispatcher
   # dispatch
   #---------------------------------------------------------------------------
   def dispatch
-          
-  end
-
-  # dispatch_algorithm
-  #---------------------------------------------------------------------------
-  def dispatch_algorithm
-    
-  end
-
-  # recall
-  #---------------------------------------------------------------------------
-  def recall
-    
+    self.apply_weights
+    self.dispatch_algorithm
   end
 
 end
