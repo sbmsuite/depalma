@@ -7,8 +7,8 @@ class DispatchUnit
   # initialize
   #---------------------------------------------------------------------------
   def initialize(weight, body)
-    @weight(weight)
-    @body(body)
+    @weight = weight
+    @body = body
   end
 
   # Instance Methods
