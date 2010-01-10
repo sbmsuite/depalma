@@ -6,9 +6,9 @@ class Dispatcher
 
   # initialize
   #---------------------------------------------------------------------------
-  def initialize(message_list=undef, unit_list=undef, rules=undef)
-    @rule_list = Array.new
-    @rule_list.concat(rules) unless rules == undef
+  def initialize(message_list=undef, unit_list=undef, rules=[])
+    @rule_list = rules
+    @rule_list.concat(rules)
     @message_list = message_list
     @unit_list = unit_list
   end
@@ -16,12 +16,12 @@ class Dispatcher
   # dispatch_algorithm
   #---------------------------------------------------------------------------
   def dispatch_algorithm
-    raise NotImplementedError, 'Please subclass Dispatcher, and write a "dispatch_algorithm" method'
+    raise NotImplementedError, 'Subclass Dispatcher and define your own "dispatch_algorithm" method.'
   end
 
   # units_from_list
   #---------------------------------------------------------------------------
-  def units_from_list(list)
+  def create_units_from_list(list)
     list.map { |x|
       DispatchUnit.new(0, x)
     }
@@ -45,6 +45,7 @@ class Dispatcher
   # dispatch
   #---------------------------------------------------------------------------
   def dispatch
+    @rule_list.each { |rule| rule.run(self.unit_list) }
     self.dispatch_algorithm
   end
 
