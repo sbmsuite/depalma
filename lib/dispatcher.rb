@@ -16,10 +16,10 @@ class Dispatcher
 
   # initialize
   #---------------------------------------------------------------------------
-  def initialize(message_list=[], unit_list=[], rule_list=[])
+  def initialize(messages=[], units=[], rules=[])
     @rule_list =  rules
-    @message_list = message_list
-    @unit_list = unit_list
+    @message_list = messages
+    @unit_list = units
   end
 
   # dispatch_algorithm
