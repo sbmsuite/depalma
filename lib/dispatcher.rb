@@ -16,9 +16,16 @@ class Dispatcher
   # dispatch_algorithm
   #---------------------------------------------------------------------------
   def dispatch_algorithm
-            
+    raise NotImplementedError, 'Please subclass Dispatcher, and write a "dispatch_algorithm" method'
   end
 
+  # units_from_list
+  #---------------------------------------------------------------------------
+  def units_from_list(list)
+    list.map { |x|
+      DispatchUnit.new(0, x)
+    }
+  end
 
   # Instance Methods
 
@@ -38,7 +45,6 @@ class Dispatcher
   # dispatch
   #---------------------------------------------------------------------------
   def dispatch
-    self.apply_weights
     self.dispatch_algorithm
   end
 
