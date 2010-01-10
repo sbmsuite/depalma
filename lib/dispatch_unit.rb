@@ -7,8 +7,8 @@ class DispatchUnit
   # initialize
   #---------------------------------------------------------------------------
   def initialize(weight, body)
-    self.weight(weight)
-    self.body(body)
+    @weight(weight)
+    @body(body)
   end
 
   # Instance Methods
@@ -16,12 +16,12 @@ class DispatchUnit
   # promote
   #---------------------------------------------------------------------------
   def promote
-    self.weight += 1
+    @weight += 1
   end
 
   # demote
   #---------------------------------------------------------------------------
   def demote
-    self.weight -= 1
+    @weight -= 1
   end
 end
