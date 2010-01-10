@@ -5,15 +5,24 @@
 
 Gem::Specification.new do |s|
   s.name = %q{depalma}
-  s.version = "0.0.0"
+  s.version = "0.1.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Christopher Rankin"]
-  s.date = %q{2010-01-08}
+  s.date = %q{2010-01-10}
   s.description = %q{Configure simple dispatch rules and have data dispatched over a group of receivers.}
   s.email = %q{rankin.devon@gmail.com}
   s.extra_rdoc_files = [
     "README.rdoc"
+  ]
+  s.files = [
+    "README.rdoc",
+     "Rakefile",
+     "VERSION",
+     "depalma.gemspec",
+     "lib/dispatch_rule.rb",
+     "lib/dispatch_unit.rb",
+     "lib/dispatcher.rb"
   ]
   s.homepage = %q{http://github.com/crankin/depalma}
   s.rdoc_options = ["--charset=UTF-8"]

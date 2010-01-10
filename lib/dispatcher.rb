@@ -1,14 +1,23 @@
 class Dispatcher
   # Accessors
-  attr_accessor :message_list, :unit_list, :assignments
+  attr_accessor :message_list, :unit_list, :rule_list
 
   # Class Methods
 
+  # units_from_list
+  #---------------------------------------------------------------------------
+  def self.create_units_from_list(list)
+    list.map { |x|
+      DispatchUnit.new(0, x)
+    }
+  end
+
+  # Instance Methods
+
   # initialize
   #---------------------------------------------------------------------------
-  def initialize(message_list=undef, unit_list=undef, rules=[])
-    @rule_list = rules
-    @rule_list.concat(rules)
+  def initialize(message_list=[], unit_list=[], rule_list=[])
+    @rule_list =  rules
     @message_list = message_list
     @unit_list = unit_list
   end
@@ -18,16 +27,6 @@ class Dispatcher
   def dispatch_algorithm
     raise NotImplementedError, 'Subclass Dispatcher and define your own "dispatch_algorithm" method.'
   end
-
-  # units_from_list
-  #---------------------------------------------------------------------------
-  def create_units_from_list(list)
-    list.map { |x|
-      DispatchUnit.new(0, x)
-    }
-  end
-
-  # Instance Methods
 
   # add_rule
   #---------------------------------------------------------------------------

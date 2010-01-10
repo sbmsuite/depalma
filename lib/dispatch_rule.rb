@@ -13,7 +13,7 @@ class DispatchRule
 
   # Run the rule, called from the dispatcher. Rules should return a list of weighted "units".
   #---------------------------------------------------------------------------
-  def run(list=undef)
+  def run(list=[])
     raise NotImplementedError, 'Please subclass DispatchRule, and write a "run" method.'
   end
 end
