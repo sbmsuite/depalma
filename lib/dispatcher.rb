@@ -24,7 +24,7 @@ class Dispatcher
 
   # dispatch_algorithm
   #---------------------------------------------------------------------------
-  def dispatch_algorithm
+  def dispatch_algorithm(data)
     raise NotImplementedError, 'Subclass Dispatcher and define your own "dispatch_algorithm" method.'
   end
 
@@ -44,8 +44,8 @@ class Dispatcher
   # dispatch
   #---------------------------------------------------------------------------
   def dispatch
-    @rule_list.each { |rule| rule.run(self.unit_list) }
-    self.dispatch_algorithm
+    data = @rule_list.map { |rule| rule.run(self.unit_list) }
+    self.dispatch_algorithm(data)
   end
 
 end
